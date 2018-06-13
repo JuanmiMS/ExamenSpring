@@ -33,8 +33,6 @@ public class Conductor {
     @Transient
     private ArrayList<Byte> valoraciones = new ArrayList<>();
 
-//    @OneToMany (cascade = CascadeType.ALL)
-//    @JoinColumn(name = "c_id")
     @Transient
     private Set<Carrera> carreras = new HashSet<>();
 
@@ -121,4 +119,11 @@ public class Conductor {
         return this.ocupado;
     }
 
+    public String getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(String tarjeta) {
+        this.tarjeta = tarjeta;
+    }
 }
