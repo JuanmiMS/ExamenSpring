@@ -117,16 +117,16 @@ public class CotxoxApplicationTests {
 		// seria necessari afegir el conductor però anem a testear primer repo
 		Assert.assertEquals("1234567890123456", carreraService.recuperaCarrera(idCarrera).getTarjetaCredito());
 	}
-//
-//	/**
-//	 * Crea una classe ConductorRepo que sigui un repositori Spring Data
-//	 * per l'entitat Conductor
-//	 */
-//	@Test
-//	public void test_ConductorRepo_es_repositori() {
-//		Assert.assertNotNull(conductorRepo);
-//		Assert.assertTrue(conductorRepo instanceof Repository);
-//	}
+
+	/**
+	 * Crea una classe ConductorRepo que sigui un repositori Spring Data
+	 * per l'entitat Conductor
+	 */
+	@Test
+	public void test_ConductorRepo_es_repositori() {
+		Assert.assertNotNull(conductorRepo);
+		Assert.assertTrue(conductorRepo instanceof Repository);
+	}
 //
 //	/**
 //	 * Implementa el servei de l'entitat conductor i el seu repositori
