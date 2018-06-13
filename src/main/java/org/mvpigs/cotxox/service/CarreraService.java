@@ -5,10 +5,7 @@ import org.mvpigs.cotxox.domain.Conductor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -16,7 +13,6 @@ public class CarreraService extends Carrera {
 
     @Autowired
     Carrera Carrera;
-
 
     public Long crearCarrera(String tarjetaCredito, String origen, String destino, int distancia,
                              int costeTotal) {
