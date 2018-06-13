@@ -35,13 +35,15 @@ public class Carrera {
 	private int propina = 0;
 
 	@ManyToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "co_tarjeta_credito")
+    @JoinColumn(name = "c_conductor")
 	private Conductor conductor = null;
 
 	/**
 	 * Constructores: necesitamos el constructor por defecto 
 	 * para trabajar con Spring JPA
 	 */
+
+	public Carrera(){}
 
 	public Carrera(String tarjetaCredito){
 		this.tarjetaCredito = tarjetaCredito;

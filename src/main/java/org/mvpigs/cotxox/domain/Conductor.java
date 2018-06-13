@@ -33,7 +33,7 @@ public class Conductor {
     @Transient
     private ArrayList<Byte> valoraciones = new ArrayList<>();
 
-//    @ManyToMany //(cascade = CascadeType.ALL)
+//    @OneToMany (cascade = CascadeType.ALL)
 //    @JoinColumn(name = "c_id")
     @Transient
     private Set<Carrera> carreras = new HashSet<>();

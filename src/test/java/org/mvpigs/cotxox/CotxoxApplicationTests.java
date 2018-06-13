@@ -43,17 +43,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 public class CotxoxApplicationTests {
 
-//	@Autowired(required=false)
-//	CarreraRepo carreraRepo;
-//
-//	@Autowired(required=false)
-//	CarreraService carreraService;
-//
-//	@Autowired(required=false)
-//	ConductorRepo conductorRepo;
-//
-//	@Autowired(required=false)
-//	ConductorService conductorService;
+	@Autowired(required=false)
+	CarreraRepo carreraRepo;
+
+	@Autowired(required=false)
+	CarreraService carreraService;
+
+	@Autowired(required=false)
+	ConductorRepo conductorRepo;
+
+	@Autowired(required=false)
+	ConductorService conductorService;
 
 	@PersistenceContext
 	private EntityManager em;
@@ -79,13 +79,13 @@ public class CotxoxApplicationTests {
 	 * Mapea la classe carrera per a reflecteixi l'esquema de la base de dades 
 	 */
 
-//	@Test
-//	public void test_mapping_carrera() {
-//		Carrera carrera = em.find(Carrera.class, 1L);
-//		Assert.assertNotNull(carrera);
-//		Assert.assertEquals("4916119711304546", carrera.getTarjetaCredito());
-//		Assert.assertEquals("Samantha", carrera.getConductor().getNombre());
-//	}
+	@Test
+	public void test_mapping_carrera() {
+		Carrera carrera = em.find(Carrera.class, 1L);
+		Assert.assertNotNull(carrera);
+		Assert.assertEquals("4916119711304546", carrera.getTarjetaCredito());
+		Assert.assertEquals("Samantha", carrera.getConductor().getNombre());
+	}
 //
 //	/**
 //	 * Crea una classe CarreraRepo que sigui un repositori Spring Data
