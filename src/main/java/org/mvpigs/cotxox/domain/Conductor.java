@@ -1,89 +1,124 @@
 package org.mvpigs.cotxox.domain;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "t_conductores")
 public class Conductor {
 
-	private String tarjeta;
-	private String nombre = null;
-	private String modelo = null;
-	private String matricula = null;
-	private double valoracionMedia = 0d;
-	private boolean ocupado = false;
-	private ArrayList<Byte> valoraciones = new ArrayList<>();
-	private Set<Carrera> carreras = new HashSet<>();
+    @Id
+    @Column(name = "co_tarjeta_credito")
+    private String tarjeta;
 
-	/**
-	 * Constructores: necesitamos el constructor por defecto 
-	 * para trabajar con Spring JPA
-	 */
-		
-	public Conductor(String tarjetaCredito){
-		this.tarjeta = tarjetaCredito;
-	}
-		
-	/** 
-	 * Getters y setters
-	 */
+    @Column(name = "co_nombre")
+    private String nombre = null;
 
-	public String getNombre() {
-		return this.nombre;
-	}
+    @Column(name = "co_modelo")
+    private String modelo = null;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    @Column(name = "co_matricula")
+    private String matricula = null;
 
-	public String getModelo() {
-		return this.modelo;
-	}
+    @Column(name = "co_valoracion_media")
+    private double valoracionMedia = 0d;
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
+    @Column(name = "co_ocupado")
+    private boolean ocupado = false;
 
-	public String getMatricula() {
-		return this.matricula;
-	}
+    @Transient
+    private ArrayList<Byte> valoraciones = new ArrayList<>();
 
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+//    @ManyToMany //(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "c_id")
+    @Transient
+    private Set<Carrera> carreras = new HashSet<>();
 
-	public double getValoracion() {
-		return this.valoracionMedia;
-	}
-	
-	public int getNumeroValoraciones(){
-		return this.valoraciones.size();
-	}
+    /**
+     * Constructores: necesitamos el constructor por defecto
+     * para trabajar con Spring JPA
+     */
 
-	public void setValoracion(byte valoracion) {		
-		this.valoraciones.add(valoracion);
-		this.calcularValoracionMedia();
-	}
+    public Conductor() {
+    }
 
-	/**
-	 * Lógica de la clase
-	 */
+    public Conductor(String tarjetaCredito) {
+        this.tarjeta = tarjetaCredito;
+    }
 
-	private double calcularValoracionMedia(){
-		int sumaValoraciones = 0;
-		for(byte valoracion : this.valoraciones){
-			sumaValoraciones += valoracion;
-		}
-		this.valoracionMedia = (double) sumaValoraciones / this.valoraciones.size();
-		return this.valoracionMedia;
-	}
-	
-	public void setOcupado(Boolean ocupado){
-		this.ocupado = ocupado;
-	}
-	
-	public boolean isOcupado(){
-		return this.ocupado;
-	}
+    /**
+     * Getters y setters
+     */
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getModelo() {
+        return this.modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getMatricula() {
+        return this.matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public double getValoracion() {
+        return this.valoracionMedia;
+    }
+
+    public int getNumeroValoraciones() {
+        return this.valoraciones.size();
+    }
+
+    public void setValoracion(byte valoracion) {
+        this.valoraciones.add(valoracion);
+        this.calcularValoracionMedia();
+    }
+
+    public Set<Carrera> getCarreras() {
+        return carreras;
+    }
+
+    public void setCarreras(Set<Carrera> carreras) {
+        this.carreras = carreras;
+    }
+
+
+    /**
+     * Lógica de la clase
+     */
+
+    private double calcularValoracionMedia() {
+        int sumaValoraciones = 0;
+        for (byte valoracion : this.valoraciones) {
+            sumaValoraciones += valoracion;
+        }
+        this.valoracionMedia = (double) sumaValoraciones / this.valoraciones.size();
+        return this.valoracionMedia;
+    }
+
+    public void setOcupado(Boolean ocupado) {
+        this.ocupado = ocupado;
+    }
+
+    public boolean isOcupado() {
+        return this.ocupado;
+    }
 
 }

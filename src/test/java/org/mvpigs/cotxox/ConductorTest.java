@@ -12,7 +12,7 @@ public class ConductorTest {
 		String nombre = "Samantha";
 		Conductor conductor = new Conductor();
 		conductor.setNombre(nombre);
-		assertEquals(nombre, conductor.getNombre());		
+		assertEquals(nombre, conductor.getNombre());
 	}
 	
 	@Test

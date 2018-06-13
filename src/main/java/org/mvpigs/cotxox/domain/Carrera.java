@@ -1,18 +1,43 @@
 package org.mvpigs.cotxox.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="t_carreras")
 public class Carrera {
 
-    private Long id;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="c_id")
+	private Long id;
+
+	@Column(name="c_tarjeta_credito")
 	private String tarjetaCredito = null;
+
+	@Column(name="c_origen")
 	private String origen = null;
+
+	@Column(name="c_destino")
 	private String destino = null;
+
+	@Column(name="c_distancia")
 	private double distancia = 0d;
+
+	@Column(name="c_tiempo_esperado")
 	private int tiempoEsperado = 0;
+
+	@Column(name="c_tiempo_carrera")
 	private int tiempoCarrera = 0;
+
+	@Column(name="c_coste_total")
 	private double costeTotal = 0;
-	private int propina = 0;	
+
+	@Column(name="c_propina")
+	private int propina = 0;
+
+	@ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "co_tarjeta_credito")
 	private Conductor conductor = null;
-	
+
 	/**
 	 * Constructores: necesitamos el constructor por defecto 
 	 * para trabajar con Spring JPA
@@ -81,7 +106,7 @@ public class Carrera {
 	public void setConductor(Conductor conductor){
 		this.conductor = conductor;
 	}
-	
+
 	public Conductor getConductor(){
 		return this.conductor;
 	}

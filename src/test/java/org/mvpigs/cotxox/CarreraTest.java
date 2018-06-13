@@ -96,7 +96,7 @@ public class CarreraTest {
 		carrera.setConductor(conductor);
 		assertEquals(nombre, carrera.getConductor().getNombre());
 	}
-	
+
 	@Test
 	public void asignarConductor(){
 		carrera.setConductor(null);
