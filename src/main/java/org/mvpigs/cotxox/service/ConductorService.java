@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class ConductorService extends Conductor{
+public class ConductorService extends Conductor {
 
     @Autowired
     Conductor Conductor;
@@ -19,15 +19,20 @@ public class ConductorService extends Conductor{
     private EntityManager em;
 
     public Conductor recuperarConductor(String tarjetaCredito) {
-        return em.find(Conductor.class,tarjetaCredito);
+        return em.find(Conductor.class, tarjetaCredito);
     }
 
-    public void crearConductor(String tarjetaCredito, String nombre, String matricula, String modelo){
+    public void crearConductor(String tarjetaCredito, String nombre, String matricula, String modelo) {
         Conductor = new Conductor(tarjetaCredito);
         Conductor.setNombre(nombre);
         Conductor.setMatricula(matricula);
         Conductor.setModelo(modelo);
 
         em.persist(Conductor);
+    }
+
+    public void init() {
+        this.crearConductor("2222222222222222", "Sabrina", "5DHJ444", "Mercedes A");
+        this.crearConductor("3333333333333333", "Cici", "7JKK555", "Toyota Prius");
     }
 }
