@@ -4,10 +4,12 @@ import org.aspectj.lang.annotation.Before;
 import org.mvpigs.cotxox.domain.Conductor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.mvpigs.cotxox.domain.Conductor;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PostPersist;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 @Service
@@ -40,4 +42,12 @@ public class ConductorService extends Conductor {
     }
 
 
+    public Conductor recuperarConductorLibre() {
+
+        TypedQuery<Conductor> query = em.createQuery("Select cond from Conductor cond where cond.ocupado = :ocupado", Conductor.class );
+        query.setParameter("ocupado", false);
+//        return query.getResultList();
+
+        return Conductor;
+    }
 }

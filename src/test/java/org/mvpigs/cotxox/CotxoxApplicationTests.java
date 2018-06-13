@@ -211,34 +211,32 @@ public class CotxoxApplicationTests {
 
 		// només n'hi ha una conductora, Samantha, a la BBDD
 
-
 		List<Conductor> conductoresLibres = conductorRepo.findByOcupado(0);
 		Assert.assertNotNull(conductoresLibres);
 		Assert.assertEquals("Samantha", conductoresLibres.get(0).getNombre());
 		Assert.assertEquals(false, conductoresLibres.get(0).isOcupado());
 
 //		 introduïm més conductores a la BBDD
-
 		conductorService.init();
 		conductoresLibres = conductorRepo.findByOcupado(0);
 		Assert.assertEquals(3, conductoresLibres.size());
 		Assert.assertEquals(false, conductoresLibres.get(1).isOcupado());
 	}
 
-//	/**
-//	 * Implementa un mètode en el servei de l'entitat Conductor
-//	 * que retorni una llista de conductores lliures
-//	 */
-//
-//	@Test
-//	public void tets_conductor_libre_service() {
-//
-//		conductorService.init();
-//
-//		Conductor conductora = conductorService.recuperarConductorLibre();
-//		Assert.assertNotNull(conductora);
-//		Assert.assertEquals(false, conductora.isOcupado());
-//	}
+	/**
+	 * Implementa un mètode en el servei de l'entitat Conductor
+	 * que retorni una llista de conductores lliures
+	 */
+
+	@Test
+	public void tets_conductor_libre_service() {
+
+		conductorService.init();
+
+		Conductor conductora = conductorService.recuperarConductorLibre();
+		Assert.assertNotNull(conductora);
+		Assert.assertEquals(false, conductora.isOcupado());
+	}
 //
 //	/**
 //	 * Assigna una conductora a una carrera que ja existeix a la BBDD

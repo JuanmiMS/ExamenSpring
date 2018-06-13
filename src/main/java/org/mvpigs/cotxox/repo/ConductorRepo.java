@@ -74,7 +74,6 @@ public class ConductorRepo implements CrudRepository<Conductor, Long> {
     public List<Conductor> findByOcupado(int ocupado) {
 
         boolean oc = ocupado != 0;
-
         TypedQuery<Conductor> query = em.createQuery("Select cond from Conductor cond where cond.ocupado = :ocupado", Conductor.class );
         query.setParameter("ocupado", oc);
         return query.getResultList();
