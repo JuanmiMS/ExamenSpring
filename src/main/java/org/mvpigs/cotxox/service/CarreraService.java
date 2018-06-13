@@ -18,10 +18,6 @@ public class CarreraService extends Carrera {
                              int costeTotal) {
 
         Carrera = new Carrera(tarjetaCredito);
-        Conductor conductor = new Conductor();
-
-        System.out.println("HEEEEE"+Long.valueOf(Carrera.getTarjetaCredito()));
-
         Carrera.setOrigen(origen);
         Carrera.setDestino(destino);
         Carrera.setDistancia(distancia);
