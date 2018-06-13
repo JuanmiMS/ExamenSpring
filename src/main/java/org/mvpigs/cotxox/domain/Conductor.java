@@ -27,7 +27,7 @@ public class Conductor {
     @Column(name = "co_valoracion_media")
     private double valoracionMedia = 0d;
 
-    @Column(name = "co_ocupado")
+    @Column(name = "co_ocupado") @GeneratedValue(strategy=GenerationType.AUTO)
     private boolean ocupado = false;
 
     @Transient
