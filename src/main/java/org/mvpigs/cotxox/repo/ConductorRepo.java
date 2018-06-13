@@ -1,8 +1,15 @@
 package org.mvpigs.cotxox.repo;
 
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Before;
 import org.mvpigs.cotxox.domain.Conductor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
+import javax.persistence.*;
+import java.util.List;
 
 @Repository
 public class ConductorRepo implements CrudRepository<Conductor, Long> {
@@ -60,4 +67,18 @@ public class ConductorRepo implements CrudRepository<Conductor, Long> {
     public void deleteAll() {
 
     }
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public List<Conductor> findByOcupado(int ocupado) {
+
+        boolean oc = ocupado != 0;
+
+        TypedQuery<Conductor> query = em.createQuery("Select cond from Conductor cond where cond.ocupado = :ocupado", Conductor.class );
+        query.setParameter("ocupado", oc);
+        return query.getResultList();
+    }
+
+
 }
